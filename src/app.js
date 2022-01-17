@@ -113,7 +113,7 @@ Ammo().then((Ammo) => {
 
     //create grid overlay on plane
     var grid = new THREE.GridHelper(175, 20, 0xffffff, 0xffffff);
-    grid.material.opacity = 0.5;
+    grid.material.opacity = 0.15;
     grid.material.transparent = true;
     grid.position.y = 0.005;
     scene.add(grid);
@@ -124,7 +124,7 @@ Ammo().then((Ammo) => {
       new THREE.MeshPhongMaterial({
         color: 0xffffff,
         transparent: true,
-        opacity: 0.25,
+        opacity: 0.15,
       })
     );
     blockPlane.position.set(pos.x, pos.y, pos.z);
@@ -373,8 +373,8 @@ Ammo().then((Ammo) => {
     addRigidPhysics(linkBox, boxScale);
   }
 
-  //loads text for Ryan Floyd Mesh
-  function loadRyanText() {
+  //loads text for Tim-H. Heuer's Mesh
+  function loadTimText() {
     var text_loader = new THREE.FontLoader();
 
     text_loader.load('./src/jsm/Roboto_Regular.json', function (font) {
@@ -387,7 +387,7 @@ Ammo().then((Ammo) => {
         new THREE.MeshPhongMaterial({ color: color }), // side
       ];
 
-      var geometry = new THREE.TextGeometry('RYAN FLOYD', {
+      var geometry = new THREE.TextGeometry('Tim-H. Heuer', {
         font: font,
         size: 3,
         height: 0.5,
@@ -431,7 +431,7 @@ Ammo().then((Ammo) => {
         new THREE.MeshPhongMaterial({ color: color }), // side
       ];
 
-      var geometry = new THREE.TextGeometry('SOFTWARE ENGINEER', {
+      var geometry = new THREE.TextGeometry('Software Developer', {
         font: font,
         size: 1.5,
         height: 0.5,
@@ -1086,7 +1086,7 @@ Ammo().then((Ammo) => {
       4,
       1,
       boxTexture.mail,
-      'mailto:arfloyd7@gmail.com',
+      'mailto:tim@heuer.nz',
       0x000000,
       false
     );
@@ -1134,7 +1134,7 @@ Ammo().then((Ammo) => {
     //lensflare
     createLensFlare(50, -50, -800, 200, 200, boxTexture.lensFlareMain);
 
-    loadRyanText();
+    loadTimText();
     loadEngineerText();
 
     let touchText, instructionsText;
@@ -1155,7 +1155,7 @@ Ammo().then((Ammo) => {
     simpleText(-42, 0.01, -30, 'EXPERIENCE', 3);
     simpleText(61, 0.01, -15, 'TIMELINE', 3);
 
-    wallOfBricks();
+    // wallOfBricks();
     createTriangle(63, -55);
     createTriangle(63, -51);
     createTriangle(63, -47);
