@@ -911,7 +911,7 @@ Ammo().then((Ammo) => {
 
     startButton.removeEventListener('click', startButtonEventListener);
     document.addEventListener('click', launchClickPosition);
-    createBeachBall();
+    // createBeachBall();
 
     setTimeout(() => {
       document.addEventListener('mousemove', launchHover);
