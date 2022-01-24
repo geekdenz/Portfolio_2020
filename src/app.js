@@ -1,6 +1,12 @@
 import * as THREE from 'three';
+// const THREE = require('three');
 import { WEBGL } from './WebGL';
 import * as Ammo from './builds/ammo';
+import * as dat from 'dat.gui';
+// import {SVGLoader} from 'jsm/SVGLoader.js';
+// import './jsm/SVGLoader.js';
+import * as SVGLoader from './jsm/SVGLoader.js';
+// require('./jsm/SVGLoader.js');
 import {
   billboardTextures,
   boxTexture,
@@ -8,6 +14,7 @@ import {
   URL,
   stoneTexture,
   woodTexture,
+  oe_v2,
 } from './resources/textures';
 
 import {
@@ -67,8 +74,10 @@ import {
 
 export let cursorHoverObjects = [];
 
+
 // start Ammo Engine
 Ammo().then((Ammo) => {
+  // const gui = new dat.GUI();
   //Ammo.js variable declaration
   let rigidBodies = [],
     physicsWorld;
@@ -377,17 +386,18 @@ Ammo().then((Ammo) => {
   function loadTimText() {
     var text_loader = new THREE.FontLoader();
 
-    text_loader.load('./src/jsm/Roboto_Regular.json', function (font) {
+    const font = 'NimbusSanL_Bold'; //Roboto_Regular 
+    text_loader.load(`./src/jsm/${font}.json`, function (font) {
       var xMid, text;
 
-      var color = 0xfffc00;
+      var color = 0xecaf36;
 
       var textMaterials = [
         new THREE.MeshBasicMaterial({ color: color }), // front
         new THREE.MeshPhongMaterial({ color: color }), // side
       ];
 
-      var geometry = new THREE.TextGeometry('Tim-H. Heuer', {
+      var geometry = new THREE.TextGeometry('Tim-Hinnerk Heuer', {
         font: font,
         size: 3,
         height: 0.5,
@@ -402,13 +412,14 @@ Ammo().then((Ammo) => {
       geometry.computeBoundingBox();
       geometry.computeVertexNormals();
 
-      xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+      xMid = -0.25 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
 
-      geometry.translate(xMid, 0, 0);
+      geometry.translate(xMid, 3, 0);
 
       var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
 
       text = new THREE.Mesh(geometry, textMaterials);
+      text.position.x = 0;
       text.position.z = -20;
       text.position.y = 0.1;
       text.receiveShadow = true;
@@ -421,10 +432,11 @@ Ammo().then((Ammo) => {
   function loadEngineerText() {
     var text_loader = new THREE.FontLoader();
 
-    text_loader.load('./src/jsm/Roboto_Regular.json', function (font) {
+    const font = 'NimbusSanL_Bold'; //Roboto_Regular 
+    text_loader.load(`./src/jsm/${font}.json`, function (font) {
       var xMid, text;
 
-      var color = 0x00ff08;
+      var color = 0x24bd9b;
 
       var textMaterials = [
         new THREE.MeshBasicMaterial({ color: color }), // front
@@ -444,7 +456,7 @@ Ammo().then((Ammo) => {
       geometry.computeBoundingBox();
       geometry.computeVertexNormals();
 
-      xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+      xMid = -0.125 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
 
       geometry.translate(xMid, 0, 0);
 
@@ -453,7 +465,7 @@ Ammo().then((Ammo) => {
       text = new THREE.Mesh(textGeo, textMaterials);
       text.position.z = -20;
       text.position.y = 0.1;
-      text.position.x = 24;
+      text.position.x = 2;
       text.receiveShadow = true;
       text.castShadow = true;
       scene.add(text);
@@ -809,6 +821,75 @@ Ammo().then((Ammo) => {
     scene.add(mesh);
   }
 
+  function createSVG(x, y, z, path) {
+    // instantiate a loader
+    // console.log('loader',THREE.SVGLoader)
+    // return;
+    const {SVGLoader} = THREE;
+    const loader = new SVGLoader();
+
+    // load a SVG resource
+    loader.load(
+      // resource URL
+      path,
+      // called when the resource is loaded
+      function (data) {
+        console.log('svg data', data)
+        const paths = data.paths;
+        const group = new THREE.Group();
+        // group.position.set(x, y, z);
+        group.position.x = x;
+        group.position.y = y;
+        group.position.z = z;
+
+        for (let i = 0; i < paths.length; i++) {
+          // console.log(`path ${i}`);
+
+          const path = paths[i];
+
+          const material = new THREE.MeshBasicMaterial({
+            color: path.color,
+            side: THREE.DoubleSide,
+            depthWrite: false
+          });
+
+          const shapes = SVGLoader.createShapes(path);
+
+          for (let j = 0; j < shapes.length; j++) {
+
+            const shape = shapes[j];
+            const geometry = new THREE.ShapeGeometry(shape);
+            const mesh = new THREE.Mesh(geometry, material);
+            group.add(mesh);
+
+          }
+
+        }
+
+        group.scale.multiplyScalar( 0.1 );
+        group.rotation.x = Math.PI * 0.5;
+        // group.rotation.x = -Math.PI;
+        // group.rotation.z = -Math.PI * 1;
+        console.log('adding svg to scene', group);
+        scene.add(group);
+
+      },
+      // called when loading is in progresses
+      function (xhr) {
+
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+      },
+      // called when loading has errors
+      function (error) {
+
+        console.log('An error happened', error);
+
+      }
+    );
+
+  }
+
   //generic function to add physics to Mesh with scale
   function addRigidPhysics(item, itemScale) {
     let pos = { x: item.position.x, y: item.position.y, z: item.position.z };
@@ -866,6 +947,19 @@ Ammo().then((Ammo) => {
     physicsBody.setLinearVelocity(resultantImpulse);
   }
 
+  // window.addEventListener('resize', () => {
+  //   let sizes = {}
+  //   // Update sizes
+  //   sizes.width = window.innerWidth
+  //   sizes.height = window.innerHeight
+  //   // Update camera
+  //   camera.aspect = sizes.width / sizes.height
+  //   camera.updateProjectionMatrix()
+  //   // Update renderer
+  //   renderer.setSize(sizes.width, sizes.height)
+  //   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  // })
+
   function renderFrame() {
     // FPS stats module
     stats.begin();
@@ -890,6 +984,7 @@ Ammo().then((Ammo) => {
 
     moveParticles();
 
+    // console.log('render')
     renderer.render(scene, camera);
     stats.end();
 
@@ -1156,10 +1251,13 @@ Ammo().then((Ammo) => {
     simpleText(61, 0.01, -15, 'TIMELINE', 3);
 
     // wallOfBricks();
-    createTriangle(63, -55);
-    createTriangle(63, -51);
-    createTriangle(63, -47);
-    createTriangle(63, -43);
+    // createTriangle(63, -55);
+    // createTriangle(63, -51);
+    // createTriangle(63, -47);
+    // createTriangle(63, -43);
+    // createSVG(30, 0, -90, 'src/jsm/oe_v2.svg');
+    // createTextOnPlane(60, 0.01, -40, oe_v2, 20, 40);
+    allSkillsSection(60, 0.05, -50, 40, Math.round(40 * Math.sqrt(2)), oe_v2, 'https://ourenvironment.scinfo.org.nz', 0.8);
 
     addParticles();
     glowingParticles();

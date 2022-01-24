@@ -271,7 +271,7 @@ export const generateGalaxy = () => {
    */
   galaxyMaterial = new THREE.ShaderMaterial({
     size: parameters.size,
-    sizeAttenuation: true,
+    // sizeAttenuation: true,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
     vertexColors: true,

@@ -52,10 +52,13 @@ URL.githubHomeSweetHome = 'https://github.com/MrRyanFloyd/home-sweet-127.0.0.1';
 URL.devTo =
   'https://dev.to/mrryanfloyd/create-an-interactive-3d-portfolio-website-that-stands-out-to-employers-47gc';
 
+const oe_v2 = '../src/jsm/oe_v2.webp';
+
 export {
   billboardTextures,
   boxTexture,
   inputText,
+  oe_v2,
   URL,
   stoneTexture,
   woodTexture,

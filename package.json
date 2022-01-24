@@ -16,6 +16,7 @@
     "@babel/core": "^7.4.3",
     "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
+    "@types/three": "^0.136.1",
     "babel-loader": "^8.0.5",
     "compression-webpack-plugin": "^4.0.0",
     "webpack": "^4.43.0",
@@ -29,6 +30,7 @@
     "express": "^4.17.1",
     "raw-loader": "^4.0.2",
     "stats.js": "^0.17.0",
-    "three": "^0.117.1"
+    "three": "^0.117.1",
+    "three-svg-loader": "^0.3.1"
   }
 }

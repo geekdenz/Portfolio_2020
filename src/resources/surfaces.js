@@ -84,7 +84,8 @@ export function allSkillsSection(
   xScale,
   zScale,
   boxTexture,
-  URLLink = null
+  URLLink = null,
+  opacity = 1
 ) {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
@@ -99,8 +100,11 @@ export function allSkillsSection(
   texture.encoding = THREE.sRGBEncoding;
   const loadedTexture = new THREE.MeshBasicMaterial({
     map: texture,
+    // transparent: opacity === 1,
     transparent: true,
+    opacity,
   });
+  loadedTexture.al
   loadedTexture.depthWrite = true;
   loadedTexture.depthTest = true;
 
