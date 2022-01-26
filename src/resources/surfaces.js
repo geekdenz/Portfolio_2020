@@ -100,11 +100,9 @@ export function allSkillsSection(
   texture.encoding = THREE.sRGBEncoding;
   const loadedTexture = new THREE.MeshBasicMaterial({
     map: texture,
-    // transparent: opacity === 1,
     transparent: true,
     opacity,
   });
-  loadedTexture.al
   loadedTexture.depthWrite = true;
   loadedTexture.depthTest = true;
 
