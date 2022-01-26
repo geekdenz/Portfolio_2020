@@ -1221,7 +1221,7 @@ Ammo().then((Ammo) => {
     // floatingLabel(44, 6.5, -70, '   How I \nmade this');
 
     allSkillsSection(-50, 0.025, 20, 40, 40, boxTexture.allSkills);
-    allSkillsSection(61, 0.025, 13, 30, 60, inputText.activities);
+    allSkillsSection(55, 0.025, -3, 60, 30, inputText.activities);
     allSkillsSection(8.5, 0.025, 54, 7, 3.5, boxTexture.skrillex);
     allSkillsSection(9, 0.01, 45, 15, 15, boxTexture.edmText);
     allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
@@ -1248,7 +1248,7 @@ Ammo().then((Ammo) => {
     simpleText(23, 0.01, -60, touchText, 1.5);
     simpleText(-50, 0.01, -5, 'SKILLS', 3);
     simpleText(-42, 0.01, -30, 'EXPERIENCE', 3);
-    simpleText(61, 0.01, -15, 'TIMELINE', 3);
+    // simpleText(61, 0.01, -15, 'TIMELINE', 3);
 
     // wallOfBricks();
     // createTriangle(63, -55);
