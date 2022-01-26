@@ -361,7 +361,7 @@ Ammo().then((Ammo) => {
     cursorHoverObjects.push(linkBox);
   }
 
-  //create Ammo.js body to add solid mass to "Ryan Floyd Software Engineer"
+  //create Ammo.js body to add solid mass to "Tim-Hinnerk Heuer Software Engineer"
   function ryanFloydWords(x, y, z) {
     const boxScale = { x: 46, y: 3, z: 2 };
     let quat = { x: 0, y: 0, z: 0, w: 1 };
