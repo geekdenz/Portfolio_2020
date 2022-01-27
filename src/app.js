@@ -6,6 +6,7 @@ import * as dat from 'dat.gui';
 // import {SVGLoader} from 'jsm/SVGLoader.js';
 // import './jsm/SVGLoader.js';
 import * as SVGLoader from './jsm/SVGLoader.js';
+
 // require('./jsm/SVGLoader.js');
 import {
   billboardTextures,
@@ -62,6 +63,7 @@ import {
   floatingLabel,
   allSkillsSection,
   createTextOnPlane,
+  addVideo,
 } from './resources/surfaces';
 
 import {
@@ -71,6 +73,7 @@ import {
   rotateCamera,
   launchHover,
 } from './resources/utils';
+import { AdditiveAnimationBlendMode } from 'three';
 
 export let cursorHoverObjects = [];
 
@@ -1259,6 +1262,10 @@ Ammo().then((Ammo) => {
     // createSVG(30, 0, -90, 'src/jsm/oe_v2.svg');
     // createTextOnPlane(60, 0.01, -40, oe_v2, 20, 40);
     allSkillsSection(60, 0.05, -50, 40, Math.round(40 * Math.sqrt(2)), oe_v2, 'https://ourenvironment.scinfo.org.nz', 0.8);
+
+    // AdditiveAnimationBlendMode()
+    console.log(URL.video)
+    addVideo(0, 0, 0, URL.video, 1920/2, 1080/2);
 
     addParticles();
     glowingParticles();

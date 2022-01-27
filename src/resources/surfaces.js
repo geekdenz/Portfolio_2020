@@ -139,3 +139,20 @@ export function createTextOnPlane(x, y, z, inputText, size1, size2) {
 
   scene.add(activitiesText);
 }
+
+export function addVideo(x, y, z, url, width, height) {
+  // console.log('texture vi',THREE.VideoTexture)
+  // texture = new THREE.VideoTexture( video );
+  /**
+<video id="video" loop crossOrigin="anonymous" playsinline style="display:none">
+	<source src="textures/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'>
+	<source src="textures/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+</video>
+   */
+  const el = document.createElement('video');
+  el.src = url;
+  el.loop = true;
+  el.crossOrigin = 'anonymous';
+  el.autoplay = true;
+  
+}
