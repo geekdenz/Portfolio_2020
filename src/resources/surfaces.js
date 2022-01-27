@@ -140,7 +140,7 @@ export function createTextOnPlane(x, y, z, inputText, size1, size2) {
   scene.add(activitiesText);
 }
 
-export function addVideo(x, y, z, url, width, height) {
+export function addVideo(x, y, z, url, width, height, from = 0, speed = 1, muted = false, rotation = 0) {
   // console.log('texture vi',THREE.VideoTexture)
   // texture = new THREE.VideoTexture( video );
   /**
@@ -154,5 +154,26 @@ export function addVideo(x, y, z, url, width, height) {
   el.loop = true;
   el.crossOrigin = 'anonymous';
   el.autoplay = true;
-  
+  el.muted = muted;
+  el.playbackRate = speed;
+  el.currentTime = from;
+  const geometry = new THREE.PlaneBufferGeometry(width, height);
+  const texture = new THREE.VideoTexture(el);
+
+  const material = new THREE.MeshBasicMaterial({
+    map: texture,
+  });
+
+  material.depthWrite = true;
+  material.depthTest = true;
+  let mesh = new THREE.Mesh(geometry, material);
+  mesh.position.x = x;
+  mesh.position.y = y;
+  mesh.position.z = z;
+  mesh.rotation.y = rotation;
+  // activitiesText.rotation.x = -Math.PI * 0.5;
+
+  mesh.renderOrder = 1;
+
+  scene.add(mesh);
 }

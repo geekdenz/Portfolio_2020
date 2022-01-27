@@ -1265,7 +1265,16 @@ Ammo().then((Ammo) => {
 
     // AdditiveAnimationBlendMode()
     console.log(URL.video)
-    addVideo(0, 0, 0, URL.video, 1920/2, 1080/2);
+    const ratio = 1920/1080;
+    const vHeight = 10;
+    const vWidth = Math.round(ratio * vHeight);
+    /**
+     *       -80, 2.5, -70,
+      billboardTextures.terpSolutionsTexture,
+      URL.terpsolutions,
+      Math.PI * 0.22
+     */
+    addVideo(-79, 5, -70, URL.video, vWidth, vHeight, 10, 10, false, Math.PI * 0.22);
 
     addParticles();
     glowingParticles();

@@ -51,7 +51,7 @@ URL.githubBagholder = 'https://github.com/MrRyanFloyd/bagholder-bets';
 URL.githubHomeSweetHome = 'https://github.com/MrRyanFloyd/home-sweet-127.0.0.1';
 URL.devTo =
   'https://dev.to/mrryanfloyd/create-an-interactive-3d-portfolio-website-that-stands-out-to-employers-47gc';
-URL.video = 'https://geekdenz-public.s3.us-east-2.amazonaws.com/videos/sibling-finder-2021-04-26-1080p.mp4';
+URL.video = 'https://geekdenz-public.s3.us-east-2.amazonaws.com/videos/sibling-finder-2021-04-26-1080p-muted.mp4';
 
 const oe_v2 = '../src/jsm/oe_v2.webp';
 
