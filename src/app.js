@@ -327,6 +327,7 @@ Ammo().then((Ammo) => {
     const loadedTexture = new THREE.MeshBasicMaterial({
       map: texture,
       transparent: transparent,
+      opacity: 0.9,
       color: 0xffffff,
     });
 
@@ -1207,7 +1208,7 @@ Ammo().then((Ammo) => {
       4,
       1,
       boxTexture.writing,
-      URL.devTo,
+      'https://github.com/geekdenz/Portfolio_2020/blob/master/README.md',
       0x000000,
       false
     );
@@ -1217,7 +1218,7 @@ Ammo().then((Ammo) => {
     floatingLabel(19.125, 4.5, -70, 'LinkedIn');
     floatingLabel(26.875, 4.5, -70, 'Email');
     // floatingLabel(35, 6.5, -70, '  Static \nWebsite');
-    floatingLabel(35, 6.5, -70, '   How I \nmade this');
+    floatingLabel(35, 6.5, -70, ' How this\nwas made');
     // floatingLabel(44, 6.5, -70, '   How I \nmade this');
 
     allSkillsSection(-50, 0.025, 20, 40, 40, boxTexture.allSkills);
