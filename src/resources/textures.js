@@ -26,7 +26,7 @@ let woodTexture = '../src/jsm/woodTexture.jpg';
 
 //text
 let inputText = {};
-inputText.terpSolutionsText = '../src/jsm/terp-solutions-text.png';
+inputText.mwlrText = '../src/jsm/portfolio-mwlr-smap.png';
 inputText.activities = '../src/jsm/portfolio-timeline.webp';
 inputText.bagholderBetsText = '../src/jsm/bagholderbets-text.png';
 inputText.homeSweetHomeText = '../src/jsm/home-sweet-home-text.png';

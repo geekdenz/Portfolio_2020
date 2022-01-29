@@ -639,6 +639,119 @@ Ammo().then((Ammo) => {
     cursorHoverObjects.push(billboardSign);
   }
 
+  function createVideoBillboard(
+    x,
+    y,
+    z,
+    videoUrl = URL.video,
+    urlLink = '',
+    rotation = 0,
+    muted = true,
+    speed = 1,
+    from = 0
+  ) {
+    const billboardPoleScale = { x: 1, y: 5, z: 1 };
+    const billboardSignScale = { x: 30, y: 15, z: 1 };
+
+    const video = document.createElement('video');
+    video.play();
+    video.src = videoUrl;
+    video.loop = true;
+    video.crossOrigin = 'anonymous';
+    video.autoplay = true;
+    video.muted = muted;
+    video.playbackRate = speed;
+    video.currentTime = from;
+    // const geometry = new THREE.PlaneBufferGeometry(width, height);
+    const texture = new THREE.VideoTexture(video);
+
+    // const material = new THREE.MeshBasicMaterial({
+    //   map: texture,
+    // });
+
+    // let mesh = new THREE.Mesh(geometry, material);
+    // mesh.position.x = x;
+    // mesh.position.y = y;
+    // mesh.position.z = z;
+    // mesh.rotation.y = rotation;
+    // // activitiesText.rotation.x = -Math.PI * 0.5;
+
+    // material.depthWrite = true;
+    // material.depthTest = true;
+    // mesh.renderOrder = 1;
+    /* default texture loading */
+    const loader = new THREE.TextureLoader(manager);
+
+    const billboardPole = new THREE.Mesh(
+      new THREE.BoxBufferGeometry(
+        billboardPoleScale.x,
+        billboardPoleScale.y,
+        billboardPoleScale.z
+      ),
+      new THREE.MeshStandardMaterial({
+        map: loader.load(woodTexture),
+      })
+    );
+
+    // const texture = loader.load(videoUrl);
+    // texture.magFilter = THREE.LinearFilter;
+    // texture.minFilter = THREE.LinearFilter;
+    // texture.encoding = THREE.sRGBEncoding;
+    var borderMaterial = new THREE.MeshBasicMaterial({
+      color: 0x000000,
+    });
+    const loadedTexture = new THREE.MeshBasicMaterial({
+      map: texture,
+    });
+    loadedTexture.depthWrite = true;
+    loadedTexture.depthTest = true;
+
+    var materials = [
+      borderMaterial, // Left side
+      borderMaterial, // Right side
+      borderMaterial, // Top side   ---> THIS IS THE FRONT
+      borderMaterial, // Bottom side --> THIS IS THE BACK
+      loadedTexture, // Front side
+      borderMaterial, // Back side
+    ];
+    // order to add materials: x+,x-,y+,y-,z+,z-
+    const billboardSign = new THREE.Mesh(
+      new THREE.BoxGeometry(
+        billboardSignScale.x,
+        billboardSignScale.y,
+        billboardSignScale.z
+      ),
+      materials
+    );
+
+    billboardSign.renderOrder = 1;
+    billboardPole.position.x = x;
+    billboardPole.position.y = y;
+    billboardPole.position.z = z;
+
+    billboardSign.position.x = x;
+    billboardSign.position.y = y + 10;
+    billboardSign.position.z = z;
+
+    /* Rotate Billboard */
+    console.log('rotation', rotation)
+    billboardPole.rotation.y = rotation;
+    billboardSign.rotation.y = rotation;
+
+    billboardPole.castShadow = true;
+    billboardPole.receiveShadow = true;
+
+    billboardSign.castShadow = true;
+    billboardSign.receiveShadow = true;
+
+    billboardSign.userData = { URL: urlLink };
+
+    scene.add(billboardPole);
+    scene.add(billboardSign);
+    addRigidPhysics(billboardPole, billboardPoleScale);
+
+    cursorHoverObjects.push(billboardSign);
+  }
   //create X axis wall around entire plane
   function createWallX(x, y, z) {
     const wallScale = { x: 0.125, y: 4, z: 175 };
@@ -1094,14 +1207,14 @@ Ammo().then((Ammo) => {
     createWallZ(0, 1.75, 87.5);
     createWallZ(0, 1.75, -87.5);
 
-    createBillboard(
-      -80,
-      2.5,
-      -70,
-      billboardTextures.terpSolutionsTexture,
-      URL.terpsolutions,
-      Math.PI * 0.22
-    );
+    // createBillboard(
+    //   -80,
+    //   2.5,
+    //   -70,
+    //   billboardTextures.terpSolutionsTexture,
+    //   URL.terpsolutions,
+    //   Math.PI * 0.22
+    // );
 
     createBillboard(
       -45,
@@ -1122,7 +1235,7 @@ Ammo().then((Ammo) => {
     );
 
     ryanFloydWords(11.2, 1, -20);
-    createTextOnPlane(-70, 0.01, -48, inputText.terpSolutionsText, 20, 40);
+    // createTextOnPlane(-70, 0.01, -48, inputText.mwlrText, 20, 40);
     createTextOnPlane(-42, 0.01, -53, inputText.bagholderBetsText, 20, 40);
     createTextOnPlane(-14, 0.01, -49, inputText.homeSweetHomeText, 20, 40);
 
@@ -1254,6 +1367,16 @@ Ammo().then((Ammo) => {
     simpleText(-42, 0.01, -30, 'EXPERIENCE', 3);
     // simpleText(61, 0.01, -15, 'TIMELINE', 3);
 
+    simpleText(-70, 0.01, -70,
+      ' MANAAKI WHENUA \n' +
+      'LANDCARE RESEARCH\n' +
+      '  Web Developer  \n' +
+      '    2010-2021    \n' +
+      '  S-map Online\n' +
+      ' Sibling Finder',
+      1.75
+    );
+    // createSVG(-65, 0.02, -75, 'src/jsm/mwlr-portfolio-smap-text-plain.svg');
     // wallOfBricks();
     // createTriangle(63, -55);
     // createTriangle(63, -51);
@@ -1264,17 +1387,23 @@ Ammo().then((Ammo) => {
     allSkillsSection(60, 0.05, -50, 40, Math.round(40 * Math.sqrt(2)), oe_v2, 'https://ourenvironment.scinfo.org.nz', 0.8);
 
     // AdditiveAnimationBlendMode()
-    console.log(URL.video)
-    const ratio = 1920/1080;
-    const vHeight = 10;
-    const vWidth = Math.round(ratio * vHeight);
+    // console.log(URL.video)
+    // const ratio = 1920/1080;
+    // const vHeight = 10;
+    // const vWidth = Math.round(ratio * vHeight);
     /**
      *       -80, 2.5, -70,
       billboardTextures.terpSolutionsTexture,
       URL.terpsolutions,
       Math.PI * 0.22
      */
-    addVideo(-79, 5, -70, URL.video, vWidth, vHeight, 10, 10, false, Math.PI * 0.22);
+    // addVideo(-79, 5, -70, URL.video, vWidth, vHeight, 10, 10, false, Math.PI * 0.22);
+    // Math.PI * 0.22
+    // 
+    //   -80,
+    //   2.5,
+    //   -70,
+    createVideoBillboard(-80, 2.5, -75, URL.video, 'https://youtu.be/_1YpyP6fyV8', Math.PI * 0.22, false, 1, 90); 
 
     addParticles();
     glowingParticles();

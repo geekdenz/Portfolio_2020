@@ -4,7 +4,7 @@ import { scene, manager } from "./world";
 export function simpleText(x, y, z, inputText, fontSize) {
   var text_loader = new THREE.FontLoader();
 
-  text_loader.load("../src/jsm/Roboto_Regular.json", function (font) {
+  text_loader.load("../src/jsm/Roboto_Mono_Regular.json", function (font) {
     var xMid, text;
 
     var color = 0xffffff;
