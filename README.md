@@ -1,5 +1,7 @@
 # Tim-Hinnerk Heuer's Portfolio
 
+[Never design what you can steal - good programmers write good code; great programmers steal great code.](https://blog.codinghorror.com/never-design-what-you-can-steal/#:~:text=As%20the%20old%20adage%20goes,before%20writing%20anything%20at%20all.)
+
 ## Credit to Ryan Floyd (creator of original)
 
 This was my quarantine project! I decided to revamp my portfolio into an interactive 3D world built using [Three.js](https://github.com/mrdoob/three.js) for graphics ( WebGL under the hood) and [Ammo.js](https://github.com/kripken/ammo.js), a port of the [Bullet physics engine](https://pybullet.org/wordpress/) to JavaScript. I had an absolute blast making this!

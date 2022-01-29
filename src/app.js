@@ -1341,7 +1341,7 @@ Ammo().then((Ammo) => {
     allSkillsSection(55, 0.025, -3, 60, 30, inputText.activities);
     allSkillsSection(8.5, 0.025, 54, 7, 3.5, boxTexture.skrillex);
     allSkillsSection(9, 0.01, 45, 15, 15, boxTexture.edmText);
-    allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
+    // allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
 
     //lensflare
     createLensFlare(50, -50, -800, 200, 200, boxTexture.lensFlareMain);
@@ -1357,9 +1357,13 @@ Ammo().then((Ammo) => {
     } else {
       touchText = 'Click on boxes with \nthe mouse to open links';
       instructionsText =
-        'Use the arrow keys on your \n keyboard to move the ball.';
+        'Use the arrow keys on your \nkeyboard to move the ball.';
     }
 
+    simpleText(9, 0.01, 20,
+      'Static portfolio site\n' +
+      '   available north\n' +
+      'in the "links" section', 1);
     simpleText(9, 0.01, 5, instructionsText, 1.25);
 
     simpleText(23, 0.01, -60, touchText, 1.5);
