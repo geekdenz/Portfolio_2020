@@ -1,10 +1,10 @@
 //billboardTextures
 let billboardTextures = {};
 billboardTextures.terpSolutionsTexture = '../src/jsm/terpSolutions.png';
-billboardTextures.bagHolderBetsTexture =
-  '../src/jsm/Bagholdersbetsbillboard.png';
-billboardTextures.homeSweetHomeTexture =
-  '../src/jsm/home-sweet-home-portrait.png';
+billboardTextures.smapMap =
+  '../src/jsm/smap-map.png';
+billboardTextures.oeTablet =
+  '../src/jsm/oe-tablet.png';
 
 //box textures
 let boxTexture = {};
@@ -47,11 +47,11 @@ URL.gitHub = 'https://github.com/geekdenz';
 URL.twitter = 'https://twitter.com/geekdenz';
 URL.LinkedIn = 'https://www.linkedin.com/in/thheuer/';
 URL.email = 'mailto:tim@heuer.nz';
-URL.githubBagholder = 'https://github.com/MrRyanFloyd/bagholder-bets';
-URL.githubHomeSweetHome = 'https://github.com/MrRyanFloyd/home-sweet-127.0.0.1';
+URL.smap = 'https://smap.landcareresearch.co.nz';
+URL.oeWebsite = 'https://ourenvironment.scinfo.org.nz';
 URL.devTo =
   'https://dev.to/mrryanfloyd/create-an-interactive-3d-portfolio-website-that-stands-out-to-employers-47gc';
-URL.video = 'https://geekdenz-public.s3.us-east-2.amazonaws.com/videos/sibling-finder-2021-04-26-1080p-muted.mp4';
+URL.siblingFinderVideo = 'https://geekdenz-public.s3.us-east-2.amazonaws.com/videos/sibling-finder-2021-04-26-1080p-muted.mp4';
 
 const oe_v2 = '../src/jsm/oe_v2.webp';
 

@@ -41,7 +41,7 @@ import {
   scene,
   camera,
   renderer,
-  stats,
+  // stats,
   manager,
   createWorld,
   lensFlareObject,
@@ -643,7 +643,7 @@ Ammo().then((Ammo) => {
     x,
     y,
     z,
-    videoUrl = URL.video,
+    videoUrl = URL.siblingFinderVideo,
     urlLink = '',
     rotation = 0,
     muted = true,
@@ -1079,7 +1079,7 @@ Ammo().then((Ammo) => {
 
   function renderFrame() {
     // FPS stats module
-    stats.begin();
+    // stats.begin();
 
     const elapsedTime = galaxyClock.getElapsedTime() + 150;
 
@@ -1103,7 +1103,7 @@ Ammo().then((Ammo) => {
 
     // console.log('render')
     renderer.render(scene, camera);
-    stats.end();
+    // stats.end();
 
     galaxyMaterial.uniforms.uTime.value = elapsedTime * 5;
     //galaxyPoints.position.set(-50, -50, 0);
@@ -1220,24 +1220,23 @@ Ammo().then((Ammo) => {
       -45,
       2.5,
       -78,
-      billboardTextures.bagHolderBetsTexture,
-      URL.githubBagholder,
-      Math.PI * 0.17
+      billboardTextures.smapMap,
+      URL.smap,
     );
 
     createBillboardRotated(
       -17,
       1.25,
       -75,
-      billboardTextures.homeSweetHomeTexture,
-      URL.githubHomeSweetHome,
-      Math.PI * 0.15
+      billboardTextures.oeTablet,
+      URL.oeWebsite,
+      Math.PI * -0.15
     );
 
     ryanFloydWords(11.2, 1, -20);
     // createTextOnPlane(-70, 0.01, -48, inputText.mwlrText, 20, 40);
-    createTextOnPlane(-42, 0.01, -53, inputText.bagholderBetsText, 20, 40);
-    createTextOnPlane(-14, 0.01, -49, inputText.homeSweetHomeText, 20, 40);
+    // createTextOnPlane(-42, 0.01, -53, inputText.bagholderBetsText, 20, 40);
+    // createTextOnPlane(-14, 0.01, -49, inputText.homeSweetHomeText, 20, 40);
 
     createBox(
       12,
@@ -1364,6 +1363,7 @@ Ammo().then((Ammo) => {
       'Static portfolio site\n' +
       '   available north\n' +
       'in the "links" section', 1);
+    // createTextOnPlane(-42, 0.01, -53, inputText.bagholderBetsText, 20, 40);
     simpleText(9, 0.01, 5, instructionsText, 1.25);
 
     simpleText(23, 0.01, -60, touchText, 1.5);
@@ -1380,6 +1380,16 @@ Ammo().then((Ammo) => {
       ' Sibling Finder',
       1.75
     );
+    simpleText(-42, 0.01, -70,
+      'S-map Online\n' +
+      '      Map',
+      1.75
+    );
+    simpleText(-14, 0.01, -65,
+      'Our Environment\nResponsive tablet',
+      1.75
+    );
+    simpleText(23 + 37, 0.01, -80, 'Our Environment - High Quality Print', 1.5);
     // createSVG(-65, 0.02, -75, 'src/jsm/mwlr-portfolio-smap-text-plain.svg');
     // wallOfBricks();
     // createTriangle(63, -55);
@@ -1407,7 +1417,7 @@ Ammo().then((Ammo) => {
     //   -80,
     //   2.5,
     //   -70,
-    createVideoBillboard(-80, 2.5, -75, URL.video, 'https://youtu.be/_1YpyP6fyV8', Math.PI * 0.22, false, 1, 90); 
+    createVideoBillboard(-80, 2.5, -75, URL.siblingFinderVideo, 'https://youtu.be/_1YpyP6fyV8', Math.PI * 0.22, false, 1, 90); 
 
     addParticles();
     glowingParticles();

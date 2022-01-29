@@ -1,6 +1,6 @@
 // use Three.js to set up graphics
 import * as THREE from 'three';
-import Stats from 'stats.js';
+// import Stats from 'stats.js';
 import galaxyVertexShader from '../jsm/vertex.glsl';
 import galaxyFragmentShader from '../jsm/fragment.glsl';
 
@@ -9,7 +9,7 @@ export let clock,
   scene,
   camera,
   renderer,
-  stats,
+  // stats,
   particleGroup,
   particleAttributes,
   particleSystemObject,
@@ -74,8 +74,8 @@ export function createWorld() {
   //renderer.shadowMap.type = THREE.BasicShadowMap;
   document.body.appendChild(renderer.domElement);
 
-  stats = new Stats();
-  document.body.appendChild(stats.dom);
+  // stats = new Stats();
+  // document.body.appendChild(stats.dom);
 
   renderer.gammaInput = true;
   renderer.gammaOutput = true;
