@@ -654,7 +654,6 @@ Ammo().then((Ammo) => {
     const billboardSignScale = { x: 30, y: 15, z: 1 };
 
     const video = document.createElement('video');
-    video.play();
     video.src = videoUrl;
     video.loop = true;
     video.crossOrigin = 'anonymous';
@@ -1382,11 +1381,24 @@ Ammo().then((Ammo) => {
     );
     simpleText(-42, 0.01, -70,
       'S-map Online\n' +
-      '      Map',
+      'This map application\n' +
+      'has been a long term\n' +
+      'project since 2010.\n' +
+      "I've been program-\n" +
+      "ming for it for 11\n" + 
+      "years.",
       1.75
     );
     simpleText(-14, 0.01, -65,
-      'Our Environment\nResponsive tablet',
+      'Our Environment\n' +
+      'Responsive tablet\n' +
+      'view. This is the\n' +
+      'running prototype\n' +
+      'for S-map Online\n' +
+      'and actually a\n' +
+      'more advanced\n' +
+      'app, though not\n' +
+      'as popular.',
       1.75
     );
     simpleText(23 + 37, 0.01, -80, 'Our Environment - High Quality Print', 1.5);
