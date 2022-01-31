@@ -1370,9 +1370,9 @@ Ammo().then((Ammo) => {
     simpleText(-42, 0.01, -30, 'EXPERIENCE', 3);
     // simpleText(61, 0.01, -15, 'TIMELINE', 3);
 
-    simpleText(-70, 0.01, -70,
+    simpleText(-75, 0.01, -70,
       ' MANAAKI WHENUA \n' +
-      'LANDCARE RESEARCH\n' +
+      'LANDCARE RESEARCH\n\n' +
       '  Web Developer  \n' +
       '    2010-2021    \n' +
       '  S-map Online\n' +
@@ -1380,25 +1380,25 @@ Ammo().then((Ammo) => {
       1.75
     );
     simpleText(-42, 0.01, -70,
-      'S-map Online\n' +
+      '    S-map Online    \n' +
       'This map application\n' +
       'has been a long term\n' +
-      'project since 2010.\n' +
-      "I've been program-\n" +
-      "ming for it for 11\n" + 
-      "years.",
+      'project since 2010. \n' +
+      " I've been program- \n" +
+      " ming for it for 11 \n" + 
+      "      years.",
       1.75
     );
-    simpleText(-14, 0.01, -65,
-      'Our Environment\n' +
+    simpleText(-9, 0.01, -70,
+      'Our Environment  \n' +
       'Responsive tablet\n' +
       'view. This is the\n' +
       'running prototype\n' +
-      'for S-map Online\n' +
-      'and actually a\n' +
-      'more advanced\n' +
-      'app, though not\n' +
-      'as popular.',
+      'for S-map Online \n' +
+      ' and actually a  \n' +
+      'more advanced app\n' +
+      ' app, though not \n' +
+      '   as popular.',
       1.75
     );
     simpleText(23 + 37, 0.01, -80, 'Our Environment - High Quality Print', 1.5);
