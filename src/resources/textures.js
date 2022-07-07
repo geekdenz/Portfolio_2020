@@ -16,8 +16,8 @@ boxTexture.globe = '../src/jsm/thunder.png';
 boxTexture.reactIcon = '../src/jsm/react.png';
 boxTexture.allSkills = '../src/jsm/allSkills.png';
 boxTexture.lensFlareMain = '../src/jsm/lensflare0.png';
-boxTexture.skrillex = '../src/jsm/skrillex.png';
-boxTexture.edmText = '../src/jsm/EDM.png';
+//boxTexture.skrillex = '../src/jsm/skrillex.png';
+//boxTexture.edmText = '../src/jsm/EDM.png';
 boxTexture.writing = '../src/jsm/writing.png';
 
 //material textures
