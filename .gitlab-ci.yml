@@ -1,0 +1,28 @@
+image: node:20-alpine
+
+variables:
+  NODE_ENV: production
+  LC_ALL: C.UTF-8
+
+before_script:
+  - npm run build
+
+test:
+  stage: test
+  script:
+    - npm run build --verbose
+  artifacts:
+    paths:
+      - test
+  except:
+    - master
+
+pages:
+  stage: deploy
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - ./
+  only:
+    - production
