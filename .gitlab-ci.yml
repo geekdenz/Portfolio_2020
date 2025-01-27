@@ -5,12 +5,12 @@ variables:
   LC_ALL: C.UTF-8
 
 before_script:
-  - npm run build
+  - npm test
 
 test:
   stage: test
   script:
-    - npm run build --verbose
+    - npm test
   artifacts:
     paths:
       - test
@@ -20,8 +20,7 @@ test:
 pages:
   stage: deploy
   script:
-    - npm i
-    - npm run build
+    - npm test
   artifacts:
     paths:
       - public
